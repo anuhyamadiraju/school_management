@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_enquiry_user,enquiry user,model_enquiry,base.group_user,1,1,1,1
+access_enquiry_manager,enquiry manager,model_enquiry,base.group_system,1,1,1,1
+student.profile,student.profile,model_student_profile,,1,1,1,1
+exam,exam,model_exam,,1,1,1,1
+school.class,school.class,model_school_class,,1,1,1,1
+event,event,model_event,,1,1,1,1
+assignment,assignment,model_assignment,,1,1,1,1
+sports,sports,model_sports,,1,1,1,1
+teacher.profile,teacher.profile,model_teacher_profile,,1,1,1,1
+event.name`,event.name,model_event_name,,1,1,1,1
+subject.name,subject.name,model_subject_name,,1,1,1,1
+access_bus_management,access.bus.management,model_bus_management,,1,1,1,1
+access_student,access.student,model_student,,1,1,1,1
+access_bus,access.bus,model_bus,,1,1,1,1

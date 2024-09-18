@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        
+        <template id="enquiry_form_page" name="Enquiry Form">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <form action="/helpdesk/submit/enquiry" method="post">
+                            <input type="text" name="name" placeholder="Your Name"/>
+                            <input type="email" name="email" placeholder="Your Email"/>
+                            <textarea name="description" placeholder="Describe your issue"></textarea>
+                            <button type="submit">Submit Enquiry</button>
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <t t-name="web.login">
+            <form method="POST" action="/web/login">
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" name="login" required="required" placeholder="Email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" name="password" required="required" placeholder="Password" class="form-control"/>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+                <div>
+                    <a href="/web/signup" class="btn btn-link">Sign up for free</a> 
+                </div>
+            </form>
+        </t>
+
+    </data>
+</odoo>

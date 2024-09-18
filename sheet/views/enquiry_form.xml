@@ -1,0 +1,252 @@
+<odoo>
+    <data>
+        
+        <template id="enquiry_form" name="Enquiry Form">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <form action="/enquiry/form/submit" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <div class="enquiry_form_page" style="width:50%; margin-top:30px; margin-left:20%;">
+                                    <div>
+                                        <h2 style="margin-left:250px;">Student Enquiry Form</h2>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="name">Student Name</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="text" class="form-control" name="name" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="class_name">Class Name</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="text" class="form-control" name="class_name" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="student_gender">Student Gender</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <select class="form-control" name="student_gender" required="1">
+                                                <option value="">Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="dob">Date Of Birth</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="date" class="form-control" name="dob" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="student_address">Student Address</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="text" class="form-control" name="student_address" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="parent_name">Parent Name</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="text" class="form-control" name="parent_name" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="phone_number">Parent Phone Number</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="text" class="form-control" name="phone_number" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row form-field mb-1">
+                                        <div class="col-sm-4 col-lg-3 text-sm-right">
+                                            <label class="col-form-label" for="parent_occupation">Parent Occupation</label>
+                                        </div>
+                                        <div class="col-lg-9 col-sm-8">
+                                            <input type="text" class="form-control" name="parent_occupation" required="1"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-1 mt-1" style="margin-left:50%;">
+                                        <div class="col-12">
+                                            <button type="submit" name="enquiry_form_submit" class="btn btn-primary">
+                                                Submit Enquiry
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        
+        <template id="enquiry_form_success" name="Enquiry Form Successfully Submitted">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <h1 class="text-center">
+                                <i class="fa fa-check-circle fa-2x text-success" role="img" aria-label="Success" title="Success"/>
+                            </h1>
+                            <h1 class="text-center">Thank you for your enquiry! <br/> Your Enquiry ID: <span t-esc="enquiry_id"/> We will get back to you soon.</h1>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        
+        <template id="enquiry_success_page" name="Enquiry Success">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container">
+                        <div>
+                            <h1 class="text-center">Your Enquiry Details</h1>
+                            <p class="text-center">Enquiry ID: <span t-esc="enquiry.enquiry_id"/></p>
+                            <p class="text-center">Student Name: <span t-esc="enquiry.name"/></p>
+                            <p class="text-center">Class: <span t-esc="enquiry.class_name"/></p>
+                            <p class="text-center">Parent Name: <span t-esc="enquiry.parent_name"/></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        
+        <template id="enquiry_search_page" name="Enquiry Search Page">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1>Search Enquiries</h1>
+                    <t t-if="enquiries">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Enquiry ID</th>
+                                    <th>Student Name</th>
+                                    <th>Parent Name</th>
+                                    <th>Phone Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="enquiries" t-as="enquiry">
+                                    <tr>
+                                        <td>
+                                            <a t-attf-href="/enquiry/detail/#{enquiry.id}">
+                                                <t t-esc="enquiry.enquiry_id"/>
+                                            </a>
+                                        </td>
+                                        <td><t t-esc="enquiry.name"/></td>
+                                        <td><t t-esc="enquiry.parent_name"/></td>
+                                        <td><t t-esc="enquiry.phone_number"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                    <t t-else="">
+                        <p>No enquiries found.</p>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <template id="enquiry_detail_page" name="Enquiry Detail Page">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h1>Enquiry Details</h1>
+                    <t t-if="enquiry">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>Enquiry ID</th>
+                                <td><t t-esc="enquiry.enquiry_id"/></td>
+                            </tr>
+                            <tr>
+                                <th>State</th>
+                                <td><t t-esc="enquiry.state"/></td>
+                            </tr>
+                            <tr>
+                                <th>Student Name</th>
+                                <td><t t-esc="enquiry.name"/></td>
+                            </tr>
+                            <tr>
+                                <th>Parent Name</th>
+                                <td><t t-esc="enquiry.parent_name"/></td>
+                            </tr>
+                            <tr>
+                                <th>Parent Phone Number</th>
+                                <td><t t-esc="enquiry.phone_number"/></td>
+                            </tr>
+                            <tr>
+                                <th>Date of Birth</th>
+                                <td><t t-esc="enquiry.dob"/></td>
+                            </tr>
+                            <tr>
+                                <th>Age</th>
+                                <td><t t-esc="enquiry.age"/></td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td><t t-esc="enquiry.address"/></td>
+                            </tr>
+                            <tr>
+                                <th>Gender</th>
+                                <td><t t-esc="enquiry.gender"/></td>
+                            </tr>
+                            <tr>
+                                <th>Parent Occupation</th>
+                                <td><t t-esc="enquiry.parent_occupation"/></td>
+                            </tr>
+                            <tr>
+                                <th>Class</th>
+                                <td><t t-esc="enquiry.class_name"/></td>
+                            </tr>
+                        </table>
+                    </t>
+                    <t t-else="">
+                        <p>No details available for this enquiry.</p>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+
+        
+        <template id="no_enquiries_found">
+            <t t-call="website.layout">
+                <div class="container">
+                    <h2>No Enquiries Found</h2>
+                    <p>You haven't created any enquiries yet.</p>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>
